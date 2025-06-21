@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - Bank App</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <form id="signup-form" class="login-form">
+      <h2>Create Account</h2>
+      <p class="tagline">Start banking securely</p>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" required placeholder="Enter your email" />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" required placeholder="Create a strong password" />
+
+      <div class="actions">
+        <button type="submit">Sign Up</button>
+        <a href="index.html">Already have an account? Login</a>
+      </div>
+
+      <div id="signup-message" class="message"></div>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="js/signup.js"></script>
+</body>
+</html>

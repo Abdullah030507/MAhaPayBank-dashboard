@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MAha PAY Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="main-wrapper">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2 class="logo">🏦 MyBank</h2>
+    <ul class="nav-links">
+      <li><a href="#profile" data-tab="profile" class="active">👤 Profile</a></li>
+      <li><a href="#balance" data-tab="balance">💰 Balance</a></li>
+      <li><a href="#transactions" data-tab="transactions">📄 Transactions</a></li>
+      <li><a href="#fd" data-tab="fd">🏦 Fixed Deposits</a></li>
+      <li><button id="logout-button" class="logout-btn">🚪 Logout</button></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <section class="dashboard">
+    <div id="profile" class="tab-content">
+  <h1>👤 Profile</h1>
+  <p id="user-email">Loading...</p>
+ <div id="profile-display" class="hidden"></div>
+  <div id="profile-form-section">
+    <form id="profile-form">
+      <div class="form-group">
+        <label>Display Name</label>
+        <input type="text" id="display_name" required />
+      </div>
+
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="text" id="phone" required/>
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <select id="gender">
+          <option value="">Select</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Age</label>
+        <input type="number" id="age" required/>
+      </div>
+
+      <div class="form-group">
+        <label>Date of Birth</label>
+        <input type="date" id="dob" required/>
+      </div>
+
+      <div class="form-group">
+        <label>Address</label>
+        <input type="text" id="address" required/>
+      </div>
+
+      <div class="form-group">
+        <label>Aadhaar</label>
+        <input type="text" id="aadhaar" placeholder="12-digit Aadhaar (e.g., 123412341234)" maxlength="12" required>
+      </div>
+
+      <div class="form-group">
+        <label>PAN</label>
+        <input type="text" id="pan" placeholder="PAN (e.g., AAAAA1111A)" maxlength="10" required>
+      </div>
+
+      <button type="submit">💾 Save Profile</button>
+      <button type="button" id="show-profile-btn" class="hidden">👁️ Show Profile</button>
+    </form>
+  </div>
+</div>
+
+
+    <div id="balance" class="tab-content hidden">
+      <h1>💰 Your Balance</h1>
+      <h2>Total: ₹<span id="total-balance">0.00</span></h2>
+      <div class="actions">
+        <button id="add-funds-btn">➕ Add Funds</button>
+        <button id="withdraw-funds-btn">➖ Withdraw Funds</button>
+      </div>
+    </div>
+
+    <div id="transactions" class="tab-content hidden">
+      <h1>📄 Transaction History</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody id="transaction-list"></tbody>
+      </table>
+    </div>
+
+    <div id="fd" class="tab-content hidden">
+      <h1>🏦 Fixed Deposits</h1>
+      <button id="create-fd-btn">Create FD</button>
+      <ul id="fd-list"></ul>
+    </div>
+  </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
