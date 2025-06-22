@@ -26,7 +26,7 @@
     supabase.auth.setSession({ access_token, refresh_token });
 
     // 🧹 Clean the URL
-    history.replaceState(null, '', 'index.html');
+    history.replaceState(null, '', window.location.pathname);
 
     // Redirect to dashboard
     window.location.href = 'dashboard.html';
