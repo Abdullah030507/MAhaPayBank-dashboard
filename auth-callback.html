@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Authenticating…</title>
+</head>
+<body>
+  <p>Hang tight—signing you in…</p>
+
+  <script type="module">
+    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+    const supabase = createClient(
+      "https://qeosajhauzqktnjvixha.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFlb3NhamhhdXpxa3RuanZpeGhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0MjMzMzUsImV4cCI6MjA2NTk5OTMzNX0.UIs2pXekSzPKjy3j_ez8oGIl5hcRdrWLs4BW8dNzJ6U"
+      );
+
+    (async () => {
+      const hash = window.location.hash;
+      if (!hash.includes("access_token")) {
+        // No token? Send back to login.
+        return window.location.replace("index.html");
+      }
+
+      const params = new URLSearchParams(hash.slice(1));
+      const access_token  = params.get("access_token");
+      const refresh_token = params.get("refresh_token");
+
+      // Set the session
+      await supabase.auth.setSession({ access_token, refresh_token });
+
+      // Clear the hash & redirect to dashboard
+      history.replaceState(null, "", window.location.pathname);
+      window.location.replace("dashboard.html");
+    })();
+  </script>
+</body>
+</html>
